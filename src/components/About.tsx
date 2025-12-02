@@ -16,10 +16,11 @@ export const About = () => {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto"
         >
-          <h2 className="text-4xl font-bold text-primary mb-8 text-center">
+          <h2 className="text-4xl font-bold text-accent mb-8 text-center drop-shadow-gold">
             About Me
           </h2>
-          <div className="bg-card rounded-xl p-8 shadow-soft">
+          <div className="relative backdrop-blur-glass bg-glass-bg rounded-2xl p-8 shadow-soft border border-accent/20 hover:border-accent/40 hover:shadow-glow transition-all duration-300">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-gold rounded-t-2xl"></div>
             <p className="text-lg text-foreground leading-relaxed">
               I am Kamalesh S, a third-year B.Tech Information Technology
               student at SNS College of Technology. With a strong foundation in
