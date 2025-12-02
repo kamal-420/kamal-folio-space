@@ -36,8 +36,8 @@ export const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-card/80 backdrop-blur-lg shadow-soft"
-          : "bg-transparent"
+          ? "backdrop-blur-glass bg-glass-bg shadow-glow border-b border-accent/30"
+          : "backdrop-blur-glass bg-glass-bg/50 border-b border-accent/10"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,7 +48,7 @@ export const Navbar = () => {
               e.preventDefault();
               scrollToSection("#hero");
             }}
-            className="text-xl font-bold text-primary hover:text-accent transition-colors"
+            className="text-xl font-bold text-accent hover:text-accent/80 transition-colors drop-shadow-gold"
           >
             Kamalesh S
           </a>
@@ -63,7 +63,7 @@ export const Navbar = () => {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="px-4 py-2 text-sm font-medium text-foreground hover:text-accent transition-colors rounded-md hover:bg-muted"
+                className="px-4 py-2 text-sm font-medium text-foreground hover:text-accent transition-colors rounded-md hover:bg-accent/10"
               >
                 {link.name}
               </a>
@@ -74,7 +74,7 @@ export const Navbar = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden text-accent hover:bg-accent/10"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
@@ -92,7 +92,7 @@ export const Navbar = () => {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="block px-4 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-muted rounded-md transition-colors"
+                className="block px-4 py-2 text-sm font-medium text-foreground hover:text-accent hover:bg-accent/10 rounded-md transition-colors"
               >
                 {link.name}
               </a>

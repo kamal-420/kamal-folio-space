@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Award, Glasses, Cloud } from "lucide-react";
+import { Glasses, Cloud, Sparkles } from "lucide-react";
 
 const workshops = [
   {
@@ -31,7 +31,7 @@ export const Workshops = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-primary mb-12 text-center">
+          <h2 className="text-4xl font-bold text-accent mb-12 text-center drop-shadow-gold">
             Technical Workshops & Training
           </h2>
 
@@ -42,19 +42,21 @@ export const Workshops = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                className="bg-card rounded-xl p-8 shadow-soft border border-border hover:shadow-medium transition-shadow"
+                className="relative backdrop-blur-glass bg-glass-bg rounded-2xl p-8 shadow-soft border border-accent/20 hover:border-accent/40 hover:shadow-glow transition-all duration-300"
               >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-gold rounded-t-2xl"></div>
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 bg-accent/10 rounded-lg">
-                    <workshop.icon className="h-6 w-6 text-accent" />
+                  <div className="p-3 bg-gradient-gold rounded-lg shadow-gold">
+                    <workshop.icon className="h-6 w-6 text-accent-foreground" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-foreground mb-3">
+                    <h3 className="text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+                      <Sparkles className="h-5 w-5 text-accent" />
                       {workshop.title}
                     </h3>
                   </div>
                 </div>
-                <p className="text-foreground leading-relaxed">
+                <p className="text-foreground/80 leading-relaxed">
                   {workshop.description}
                 </p>
               </motion.div>

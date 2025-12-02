@@ -49,12 +49,17 @@ export default {
         },
       },
       backgroundImage: {
-        'gradient-primary': 'var(--gradient-primary)',
-        'gradient-accent': 'var(--gradient-accent)',
+        'gradient-royal': 'var(--gradient-royal)',
+        'gradient-gold': 'var(--gradient-gold)',
+        'gradient-purple-blue': 'var(--gradient-purple-blue)',
       },
       boxShadow: {
         'soft': 'var(--shadow-soft)',
-        'medium': 'var(--shadow-medium)',
+        'glow': 'var(--shadow-glow)',
+        'gold': 'var(--shadow-gold)',
+      },
+      backdropBlur: {
+        'glass': '12px',
       },
       transitionProperty: {
         'smooth': 'var(--transition-smooth)',
