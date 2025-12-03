@@ -62,9 +62,15 @@ export const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const whatsappMessage = `Hello Kamalesh!%0A%0AName: ${encodeURIComponent(formData.name)}%0AEmail: ${encodeURIComponent(formData.email)}%0A%0AMessage: ${encodeURIComponent(formData.message)}`;
+    const whatsappUrl = `https://wa.me/919677643687?text=${whatsappMessage}`;
+    
+    window.open(whatsappUrl, "_blank");
+    
     toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon!",
+      title: "Opening WhatsApp!",
+      description: "Complete sending your message in WhatsApp.",
     });
     setFormData({ name: "", email: "", message: "" });
   };
