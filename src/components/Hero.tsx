@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { ArrowDown, Sparkles } from "lucide-react";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 export const Hero = () => {
   const scrollToProjects = () => {
@@ -128,16 +129,12 @@ export const Hero = () => {
               
               {/* Photo Frame */}
               <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-full border-4 border-accent shadow-gold overflow-hidden backdrop-blur-glass bg-glass-bg p-2">
-                <div className="w-full h-full rounded-full border-2 border-accent/50 overflow-hidden bg-muted/20 flex items-center justify-center">
-                  {/* Placeholder - Replace with actual image */}
-                  <div className="text-6xl text-accent">KS</div>
-                  {/* Uncomment and use when image is uploaded:
+                <div className="w-full h-full rounded-full border-2 border-accent/50 overflow-hidden">
                   <img 
-                    src="/path-to-uploaded-image.jpg" 
+                    src={profilePhoto} 
                     alt="Kamalesh S" 
                     className="w-full h-full object-cover"
                   />
-                  */}
                 </div>
               </div>
 
