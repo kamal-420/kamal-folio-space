@@ -41,7 +41,7 @@ const socialLinks = [
   {
     icon: Code2,
     label: "LeetCode",
-    href: "https://leetcode.com/u/kamalesh_2005/",
+    href: "https://leetcode.com/u/kamal-2005/",
   },
   {
     icon: Instagram,
