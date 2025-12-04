@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
-import { ArrowDown, Sparkles } from "lucide-react";
+import { ArrowDown, Sparkles, Download } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 export const Hero = () => {
@@ -105,6 +105,17 @@ export const Hero = () => {
                 className="border-2 border-accent text-accent hover:bg-accent/10 hover:shadow-glow font-semibold px-8 py-6 text-lg"
               >
                 Contact Me
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="border-2 border-accent text-accent hover:bg-accent/10 hover:shadow-glow font-semibold px-8 py-6 text-lg"
+              >
+                <a href="/resume/kamalesh-resume.pdf" download="Kamalesh_S_Resume.pdf">
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Resume
+                </a>
               </Button>
             </motion.div>
           </motion.div>
