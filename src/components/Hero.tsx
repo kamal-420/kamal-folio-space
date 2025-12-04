@@ -56,6 +56,48 @@ export const Hero = () => {
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+          {/* Profile Photo - Shows first on mobile */}
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex justify-center lg:hidden"
+          >
+            <div className="relative">
+              {/* Golden Glow Ring */}
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.05, 1],
+                  opacity: [0.5, 0.8, 0.5]
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 rounded-full bg-gradient-gold blur-2xl opacity-50"
+              />
+              
+              {/* Photo Frame */}
+              <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full border-4 border-accent shadow-gold overflow-hidden backdrop-blur-glass bg-glass-bg p-2">
+                <div className="w-full h-full rounded-full border-2 border-accent/50 overflow-hidden">
+                  <img 
+                    src={profilePhoto} 
+                    alt="Kamalesh S" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Floating Sparkles */}
+              <motion.div
+                animate={{ 
+                  y: [0, -10, 0],
+                  rotate: [0, 180, 360]
+                }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="absolute -top-4 -right-4"
+              >
+                <Sparkles className="h-6 w-6 text-accent" />
+              </motion.div>
+            </div>
+          </motion.div>
           {/* Left Side - Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -120,12 +162,12 @@ export const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Side - Profile Photo */}
+          {/* Right Side - Profile Photo (Desktop only) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex justify-center lg:justify-end"
+            className="hidden lg:flex justify-center lg:justify-end"
           >
             <div className="relative">
               {/* Golden Glow Ring */}
