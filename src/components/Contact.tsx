@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Phone, Github, Linkedin, MapPin, Code2, Instagram, Sparkles, MessageCircle } from "lucide-react";
+import { Mail, Phone, Github, Linkedin, MapPin, Code2, Instagram, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -47,11 +47,6 @@ const socialLinks = [
     icon: Instagram,
     label: "Instagram",
     href: "https://www.instagram.com/_.alone_kdboy._?igsh=Z2tsNTNyM2FwbDA2",
-  },
-  {
-    icon: MessageCircle,
-    label: "WhatsApp",
-    href: "https://wa.me/919677643687",
   },
 ];
 
