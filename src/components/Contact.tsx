@@ -171,11 +171,16 @@ export const Contact = () => {
                         duration: 0.6,
                         delay: 0.5 + index * 0.1,
                       }}
+                      whileHover={{ 
+                        scale: 1.05,
+                        y: -4,
+                      }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       <Button
                         asChild
                         variant="outline"
-                        className="w-full border-2 border-accent/30 text-accent hover:bg-accent/10 hover:border-accent hover:shadow-glow transition-all"
+                        className="w-full border-2 border-accent/30 text-accent hover:bg-accent/10 hover:border-accent hover:shadow-glow transition-all duration-300 group"
                       >
                         <a
                           href={social.href}
@@ -183,7 +188,7 @@ export const Contact = () => {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2"
                         >
-                          <social.icon className="h-5 w-5" />
+                          <social.icon className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
                           {social.label}
                         </a>
                       </Button>
