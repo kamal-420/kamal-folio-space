@@ -75,7 +75,7 @@ export const Hero = () => {
               />
               
               {/* Photo Frame */}
-              <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full border-4 border-accent shadow-gold overflow-hidden backdrop-blur-glass bg-glass-bg p-2">
+              <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full border-4 border-accent shadow-gold overflow-hidden backdrop-blur-glass bg-glass-bg p-2">
                 <div className="w-full h-full rounded-full border-2 border-accent/50 overflow-hidden">
                   <img 
                     src={profilePhoto} 
