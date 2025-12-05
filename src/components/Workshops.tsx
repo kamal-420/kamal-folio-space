@@ -18,6 +18,27 @@ const workshops = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6 },
+  },
+};
+
 export const Workshops = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -27,28 +48,36 @@ export const Workshops = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
         >
-          <h2 className="text-4xl font-bold text-accent mb-12 text-center drop-shadow-gold">
+          <motion.h2 
+            variants={cardVariants}
+            className="text-4xl font-bold text-accent mb-12 text-center drop-shadow-gold"
+          >
             Technical Workshops & Training
-          </h2>
+          </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {workshops.map((workshop, index) => (
               <motion.div
                 key={workshop.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                variants={cardVariants}
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
                 className="relative backdrop-blur-glass bg-glass-bg rounded-2xl p-8 shadow-soft border border-accent/20 hover:border-accent/40 hover:shadow-glow transition-all duration-300"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-gold rounded-t-2xl"></div>
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 bg-gradient-gold rounded-lg shadow-gold">
+                  <motion.div 
+                    initial={{ rotate: -15, scale: 0.8 }}
+                    animate={isInView ? { rotate: 0, scale: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.15 }}
+                    className="p-3 bg-gradient-gold rounded-lg shadow-gold"
+                  >
                     <workshop.icon className="h-6 w-6 text-accent-foreground" />
-                  </div>
+                  </motion.div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-foreground mb-3 flex items-center gap-2">
                       <Sparkles className="h-5 w-5 text-accent" />
