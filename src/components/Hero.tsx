@@ -134,9 +134,9 @@ export const Hero = () => {
               <Button
                 size="lg"
                 onClick={scrollToProjects}
-                className="bg-gradient-gold hover:shadow-gold text-accent-foreground font-semibold px-8 py-6 text-lg group border-2 border-accent/30 w-full sm:w-52"
+                className="bg-gradient-gold hover:shadow-gold text-accent-foreground font-semibold px-8 py-6 text-lg group border-2 border-accent/30 w-full sm:w-52 transition-all duration-300 hover:scale-105 hover:-translate-y-1"
               >
-                <Sparkles className="mr-2 h-5 w-5" />
+                <Sparkles className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
                 View My Projects
                 <ArrowDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
               </Button>
@@ -144,7 +144,7 @@ export const Hero = () => {
                 size="lg"
                 variant="outline"
                 onClick={scrollToContact}
-                className="border-2 border-accent text-accent hover:bg-accent/10 hover:shadow-glow font-semibold px-8 py-6 text-lg w-full sm:w-52"
+                className="border-2 border-accent text-accent hover:bg-accent/10 hover:shadow-glow font-semibold px-8 py-6 text-lg w-full sm:w-52 transition-all duration-300 hover:scale-105 hover:-translate-y-1"
               >
                 Contact Me
               </Button>
@@ -152,10 +152,10 @@ export const Hero = () => {
                 size="lg"
                 variant="outline"
                 asChild
-                className="border-2 border-accent text-accent hover:bg-accent/10 hover:shadow-glow font-semibold px-8 py-6 text-lg w-full sm:w-52"
+                className="border-2 border-accent text-accent hover:bg-accent/10 hover:shadow-glow font-semibold px-8 py-6 text-lg w-full sm:w-52 transition-all duration-300 hover:scale-105 hover:-translate-y-1 group"
               >
                 <a href="/resume/kamalesh-resume.pdf" download="Kamalesh_S_Resume.pdf">
-                  <Download className="mr-2 h-5 w-5" />
+                  <Download className="mr-2 h-5 w-5 group-hover:animate-bounce transition-transform duration-300" />
                   Download Resume
                 </a>
               </Button>
