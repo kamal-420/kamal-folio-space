@@ -78,6 +78,38 @@ export const Hero = () => {
           className="absolute top-1/3 right-10 w-24 h-24 bg-accent/15 rounded-lg blur-xl rotate-45"
         />
       </div>
+
+      {/* Particle Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(30)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ 
+              x: `${Math.random() * 100}%`,
+              y: `${Math.random() * 100}%`,
+              opacity: 0
+            }}
+            animate={{ 
+              y: [`${Math.random() * 100}%`, `${Math.random() * 100}%`, `${Math.random() * 100}%`],
+              x: [`${Math.random() * 100}%`, `${Math.random() * 100}%`, `${Math.random() * 100}%`],
+              opacity: [0, 0.6, 0]
+            }}
+            transition={{ 
+              duration: 8 + Math.random() * 8,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+              ease: "easeInOut"
+            }}
+            className={`absolute rounded-full ${
+              i % 3 === 0 
+                ? 'w-1 h-1 bg-accent/60' 
+                : i % 3 === 1 
+                  ? 'w-2 h-2 bg-accent/40' 
+                  : 'w-1.5 h-1.5 bg-primary/50'
+            }`}
+          />
+        ))}
+      </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
