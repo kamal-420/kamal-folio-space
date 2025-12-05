@@ -2,8 +2,33 @@ import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { ArrowDown, Sparkles, Download } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import { useState, useEffect } from "react";
 
 export const Hero = () => {
+  const tagline = "Third-year B.Tech Information Technology student | Frontend & Cloud Enthusiast";
+  const [displayedText, setDisplayedText] = useState("");
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
+  useEffect(() => {
+    let index = 0;
+    const typingDelay = 40;
+    
+    const typeNextChar = () => {
+      if (index < tagline.length) {
+        setDisplayedText(tagline.slice(0, index + 1));
+        index++;
+        setTimeout(typeNextChar, typingDelay);
+      } else {
+        setIsTypingComplete(true);
+      }
+    };
+
+    const startDelay = setTimeout(() => {
+      typeNextChar();
+    }, 800);
+
+    return () => clearTimeout(startDelay);
+  }, []);
   const scrollToProjects = () => {
     const element = document.querySelector("#projects");
     if (element) {
@@ -116,13 +141,19 @@ export const Hero = () => {
             </motion.div>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-xl sm:text-2xl text-foreground/90 mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3, delay: 0.4 }}
+              className="text-xl sm:text-2xl text-foreground/90 mb-8 min-h-[3.5rem]"
             >
-              Third-year B.Tech Information Technology student | Frontend & Cloud
-              Enthusiast
+              {displayedText}
+              {!isTypingComplete && (
+                <motion.span
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.5, repeat: Infinity }}
+                  className="inline-block w-0.5 h-6 bg-accent ml-1 align-middle"
+                />
+              )}
             </motion.p>
 
             <motion.div
