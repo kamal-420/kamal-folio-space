@@ -134,7 +134,7 @@ export const Hero = () => {
               <Button
                 size="lg"
                 onClick={scrollToProjects}
-                className="bg-gradient-gold hover:shadow-gold text-accent-foreground font-semibold px-8 py-6 text-lg group border-2 border-accent/30"
+                className="bg-gradient-gold hover:shadow-gold text-accent-foreground font-semibold px-8 py-6 text-lg group border-2 border-accent/30 w-full sm:w-52"
               >
                 <Sparkles className="mr-2 h-5 w-5" />
                 View My Projects
@@ -144,7 +144,7 @@ export const Hero = () => {
                 size="lg"
                 variant="outline"
                 onClick={scrollToContact}
-                className="border-2 border-accent text-accent hover:bg-accent/10 hover:shadow-glow font-semibold px-8 py-6 text-lg"
+                className="border-2 border-accent text-accent hover:bg-accent/10 hover:shadow-glow font-semibold px-8 py-6 text-lg w-full sm:w-52"
               >
                 Contact Me
               </Button>
@@ -152,7 +152,7 @@ export const Hero = () => {
                 size="lg"
                 variant="outline"
                 asChild
-                className="border-2 border-accent text-accent hover:bg-accent/10 hover:shadow-glow font-semibold px-8 py-6 text-lg"
+                className="border-2 border-accent text-accent hover:bg-accent/10 hover:shadow-glow font-semibold px-8 py-6 text-lg w-full sm:w-52"
               >
                 <a href="/resume/kamalesh-resume.pdf" download="Kamalesh_S_Resume.pdf">
                   <Download className="mr-2 h-5 w-5" />
