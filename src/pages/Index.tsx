@@ -8,19 +8,34 @@ import { Workshops } from "@/components/Workshops";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { CustomCursor } from "@/components/CustomCursor";
+import { SectionWrapper } from "@/components/SectionWrapper";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <CustomCursor />
       <ScrollProgress />
       <Navbar />
       <Hero />
-      <About />
-      <Education />
-      <Skills />
-      <Projects />
-      <Workshops />
-      <Contact />
+      <SectionWrapper>
+        <About />
+      </SectionWrapper>
+      <SectionWrapper delay={0.1}>
+        <Education />
+      </SectionWrapper>
+      <SectionWrapper delay={0.1}>
+        <Skills />
+      </SectionWrapper>
+      <SectionWrapper delay={0.1}>
+        <Projects />
+      </SectionWrapper>
+      <SectionWrapper delay={0.1}>
+        <Workshops />
+      </SectionWrapper>
+      <SectionWrapper delay={0.1}>
+        <Contact />
+      </SectionWrapper>
       <Footer />
     </div>
   );

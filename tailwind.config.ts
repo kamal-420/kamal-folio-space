@@ -52,6 +52,7 @@ export default {
         'gradient-royal': 'var(--gradient-royal)',
         'gradient-gold': 'var(--gradient-gold)',
         'gradient-purple-blue': 'var(--gradient-purple-blue)',
+        'gradient-radial': 'radial-gradient(ellipse at center, var(--tw-gradient-stops))',
       },
       boxShadow: {
         'soft': 'var(--shadow-soft)',
