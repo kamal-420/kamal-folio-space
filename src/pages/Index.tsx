@@ -10,6 +10,7 @@ import { Footer } from "@/components/Footer";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { CustomCursor } from "@/components/CustomCursor";
 import { SectionWrapper } from "@/components/SectionWrapper";
+import { BackToTop } from "@/components/BackToTop";
 
 const Index = () => {
   return (
@@ -37,6 +38,7 @@ const Index = () => {
         <Contact />
       </SectionWrapper>
       <Footer />
+      <BackToTop />
     </div>
   );
 };
