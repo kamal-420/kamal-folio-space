@@ -1,13 +1,25 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "./ui/button";
 import { ArrowDown, Sparkles, Download } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export const Hero = () => {
   const tagline = "Third-year B.Tech Information Technology student | Frontend & Cloud Enthusiast";
   const [displayedText, setDisplayedText] = useState("");
   const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+
+  // Parallax transforms for background elements
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   useEffect(() => {
     let index = 0;
@@ -45,39 +57,40 @@ export const Hero = () => {
 
   return (
     <section
+      ref={ref}
       id="hero"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       {/* Royal Gradient Background */}
       <div className="absolute inset-0 bg-gradient-royal"></div>
       
-      {/* Floating 3D Royal Shapes */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Floating 3D Royal Shapes with Parallax */}
+      <motion.div className="absolute inset-0 overflow-hidden" style={{ opacity }}>
         <motion.div
+          style={{ y: y1 }}
           animate={{ 
-            y: [0, -20, 0],
             rotate: [0, 5, 0]
           }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 left-10 w-20 h-20 bg-accent/10 rounded-full blur-xl"
         />
         <motion.div
+          style={{ y: y2 }}
           animate={{ 
-            y: [0, 20, 0],
             rotate: [0, -5, 0]
           }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute bottom-40 right-20 w-32 h-32 bg-primary/20 rounded-full blur-2xl"
         />
         <motion.div
+          style={{ y: y3 }}
           animate={{ 
-            y: [0, -15, 0],
             x: [0, 10, 0]
           }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-1/3 right-10 w-24 h-24 bg-accent/15 rounded-lg blur-xl rotate-45"
         />
-      </div>
+      </motion.div>
 
       {/* Particle Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
