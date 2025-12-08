@@ -21,22 +21,22 @@ const Index = () => {
       <ScrollProgress />
       <Navbar />
       <Hero />
-      <SectionWrapper>
+      <SectionWrapper direction="up">
         <About />
       </SectionWrapper>
-      <SectionWrapper delay={0.1}>
+      <SectionWrapper delay={0.1} direction="left">
         <Education />
       </SectionWrapper>
-      <SectionWrapper delay={0.1}>
+      <SectionWrapper delay={0.1} direction="right">
         <Skills />
       </SectionWrapper>
-      <SectionWrapper delay={0.1}>
+      <SectionWrapper delay={0.1} direction="up">
         <Projects />
       </SectionWrapper>
-      <SectionWrapper delay={0.1}>
+      <SectionWrapper delay={0.1} direction="left">
         <Workshops />
       </SectionWrapper>
-      <SectionWrapper delay={0.1}>
+      <SectionWrapper delay={0.1} direction="right">
         <Contact />
       </SectionWrapper>
       <Footer />
