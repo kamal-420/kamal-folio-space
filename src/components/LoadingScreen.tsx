@@ -4,8 +4,21 @@ import { useEffect, useState } from "react";
 const LoadingScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const fullText = "Loading portfolio...";
 
   useEffect(() => {
+    // Typewriter effect
+    let charIndex = 0;
+    const typewriterInterval = setInterval(() => {
+      if (charIndex < fullText.length) {
+        setDisplayedText(fullText.slice(0, charIndex + 1));
+        charIndex++;
+      } else {
+        clearInterval(typewriterInterval);
+      }
+    }, 80);
+
     // Simulate loading progress
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
@@ -20,11 +33,12 @@ const LoadingScreen = () => {
     // Hide loading screen after animation
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 2500);
 
     return () => {
       clearTimeout(timer);
       clearInterval(progressInterval);
+      clearInterval(typewriterInterval);
     };
   }, []);
 
@@ -124,19 +138,19 @@ const LoadingScreen = () => {
               />
             </motion.div>
 
-            {/* Loading text */}
+            {/* Loading text with typewriter effect */}
             <motion.p
-              className="text-muted-foreground text-sm"
+              className="text-muted-foreground text-sm h-5 font-mono"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
+              <span>{displayedText}</span>
               <motion.span
-                animate={{ opacity: [1, 0.5, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                Loading portfolio...
-              </motion.span>
+                className="inline-block w-0.5 h-4 bg-gold ml-0.5 align-middle"
+                animate={{ opacity: [1, 0] }}
+                transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+              />
             </motion.p>
           </div>
 
