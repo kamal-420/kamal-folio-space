@@ -6,29 +6,86 @@ import { Code, Lightbulb, Sparkles } from "lucide-react";
 const academicSkills = [
   {
     title: "Programming",
-    skills: "Python, Java, C, HTML, CSS, JavaScript",
+    skills: [
+      { name: "Python", level: 85 },
+      { name: "Java", level: 80 },
+      { name: "C", level: 75 },
+      { name: "JavaScript", level: 70 },
+    ],
   },
   {
     title: "Web",
-    skills: "HTML, CSS, JavaScript",
+    skills: [
+      { name: "HTML", level: 90 },
+      { name: "CSS", level: 85 },
+      { name: "JavaScript", level: 70 },
+    ],
   },
   {
     title: "Tools & Platforms",
-    skills: "Microsoft Excel, Word, PowerPoint, Visual Studio, CapCut (Video Editing)",
+    skills: [
+      { name: "Microsoft Excel", level: 85 },
+      { name: "Visual Studio", level: 80 },
+      { name: "CapCut", level: 75 },
+    ],
   },
   {
     title: "Core Concepts",
-    skills: "Data Structures, OOP concepts, DBMS",
+    skills: [
+      { name: "Data Structures", level: 80 },
+      { name: "OOP", level: 85 },
+      { name: "DBMS", level: 75 },
+    ],
   },
 ];
 
 const softSkills = [
-  "Communication skills (oral & written)",
-  "Teamwork & collaboration",
-  "Leadership & initiative",
-  "Problem-solving & critical thinking",
-  "Time management & organization",
+  { name: "Communication", level: 90 },
+  { name: "Teamwork", level: 95 },
+  { name: "Leadership", level: 85 },
+  { name: "Problem-solving", level: 88 },
+  { name: "Time Management", level: 82 },
 ];
+
+interface SkillBarProps {
+  name: string;
+  level: number;
+  delay: number;
+  isInView: boolean;
+}
+
+const SkillBar = ({ name, level, delay, isInView }: SkillBarProps) => {
+  return (
+    <div className="mb-3">
+      <div className="flex justify-between mb-1">
+        <span className="text-sm font-medium text-foreground/90">{name}</span>
+        <motion.span
+          className="text-sm font-medium text-accent"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: delay + 0.5 }}
+        >
+          {level}%
+        </motion.span>
+      </div>
+      <div className="h-2 bg-muted rounded-full overflow-hidden">
+        <motion.div
+          className="h-full bg-gradient-gold rounded-full relative"
+          initial={{ width: 0 }}
+          animate={isInView ? { width: `${level}%` } : { width: 0 }}
+          transition={{ duration: 1, delay, ease: [0.25, 0.4, 0.25, 1] }}
+        >
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+            initial={{ x: "-100%" }}
+            animate={isInView ? { x: "200%" } : { x: "-100%" }}
+            transition={{ duration: 1.5, delay: delay + 0.5, ease: "easeInOut" }}
+          />
+        </motion.div>
+      </div>
+    </div>
+  );
+};
 
 export const Skills = () => {
   const ref = useRef(null);
@@ -66,20 +123,28 @@ export const Skills = () => {
               </div>
 
               <div className="space-y-6">
-                {academicSkills.map((category, index) => (
+                {academicSkills.map((category, categoryIndex) => (
                   <motion.div
                     key={category.title}
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                    transition={{ duration: 0.6, delay: 0.3 + categoryIndex * 0.1 }}
                   >
-                    <h4 className="font-semibold text-accent mb-2 flex items-center gap-2">
+                    <h4 className="font-semibold text-accent mb-3 flex items-center gap-2">
                       <Sparkles className="h-4 w-4" />
                       {category.title}
                     </h4>
-                    <p className="text-foreground/80 leading-relaxed">
-                      {category.skills}
-                    </p>
+                    <div className="pl-2">
+                      {category.skills.map((skill, skillIndex) => (
+                        <SkillBar
+                          key={skill.name}
+                          name={skill.name}
+                          level={skill.level}
+                          delay={0.4 + categoryIndex * 0.15 + skillIndex * 0.1}
+                          isInView={isInView}
+                        />
+                      ))}
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -102,20 +167,17 @@ export const Skills = () => {
                 </h3>
               </div>
 
-              <ul className="space-y-4">
+              <div className="space-y-4">
                 {softSkills.map((skill, index) => (
-                  <motion.li
-                    key={skill}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                    className="flex items-center gap-3 text-foreground/80"
-                  >
-                    <div className="h-2 w-2 rounded-full bg-gradient-gold shadow-gold" />
-                    {skill}
-                  </motion.li>
+                  <SkillBar
+                    key={skill.name}
+                    name={skill.name}
+                    level={skill.level}
+                    delay={0.5 + index * 0.15}
+                    isInView={isInView}
+                  />
                 ))}
-              </ul>
+              </div>
             </motion.div>
           </div>
         </motion.div>
