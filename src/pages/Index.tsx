@@ -11,10 +11,12 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { CustomCursor } from "@/components/CustomCursor";
 import { SectionWrapper } from "@/components/SectionWrapper";
 import { BackToTop } from "@/components/BackToTop";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <LoadingScreen />
       <CustomCursor />
       <ScrollProgress />
       <Navbar />
