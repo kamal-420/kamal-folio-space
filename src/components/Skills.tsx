@@ -57,16 +57,8 @@ interface SkillBarProps {
 const SkillBar = ({ name, level, delay, isInView }: SkillBarProps) => {
   return (
     <div className="mb-3">
-      <div className="flex justify-between mb-1">
+      <div className="mb-1">
         <span className="text-sm font-medium text-foreground/90">{name}</span>
-        <motion.span
-          className="text-sm font-medium text-accent"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: delay + 0.5 }}
-        >
-          {level}%
-        </motion.span>
       </div>
       <div className="h-2 bg-muted rounded-full overflow-hidden">
         <motion.div
